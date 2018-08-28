@@ -16,11 +16,14 @@ export default new Vuex.Store({
   },
   mutations: {
     saveMovies(state, movies) {
-      state.movies = movies;
+      state.movies = movies.filter(movie => !movie.adult);
     }
   },
   actions: {
     async search({ commit }, search) {
+      if (!search) {
+        return;
+      }
       const data = await movieAPI.get(search);
       commit('saveMovies', data.data.results);
     }
