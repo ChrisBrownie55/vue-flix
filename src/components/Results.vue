@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'Results'
+  name: 'Results',
+  props: {
+    movies: {
+      type: Array,
+      requird: true
+    }
+  }
 };
 </script>
 
